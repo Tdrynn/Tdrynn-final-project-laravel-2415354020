@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\SubscriptionController;
 
 Route::get('/', function () {
     return response()->json([
@@ -30,3 +31,5 @@ Route::patch("customers/{customer}/deactivate", [
     CustomerController::class,
     "deactivate",
 ]);
+
+Route::apiResource("subscriptions", SubscriptionController::class);
