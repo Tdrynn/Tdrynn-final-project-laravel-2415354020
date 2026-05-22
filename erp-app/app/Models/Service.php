@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Iluminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Service extends Model
 {
@@ -14,11 +14,12 @@ class Service extends Model
         "description",
         "status"
     ];
+
+    /**
+     * @return HasMany<Subscription, $this>
+     */
+    public function subscriptions(): HasMany {
+        return $this->hasMany(Subscription::class);
+    }
 }
-// /**
-//  * @return HasMany<Subscription, $this>
-//  */
-// public function subscriptions(): HasMany {
-//     return $this->hasMany(Subscription::class)
-// }
 
