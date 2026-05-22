@@ -43,7 +43,6 @@ class CustomerController extends Controller
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
-            "customer_id" => ["required", "string", "unique:customers,customer_id"],
             "name" => ["required", "string"],
             "email" => ["nullable", "email", "unique:customers,email"],
             "phone" => ["nullable", "string"],
@@ -94,7 +93,6 @@ class CustomerController extends Controller
         }
 
         $data = $request->validate([
-            "customer_id" => ["sometimes", "string", "unique:customers,customer_id," . $customer->id],
             "name" => ["sometimes", "string"],
             "email" => ["nullable", "email", "unique:customers,email," . $customer->id],
             "phone" => ["nullable", "string"],
