@@ -5,13 +5,6 @@ use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\SubscriptionController;
 
-Route::get('/', function () {
-    return response()->json([
-        'success' => true,
-        'message' => 'Welcome to ERP Web API v1'
-    ]);
-});
-
 Route::apiResource("services", ServiceController::class);
 Route::patch("services/{service}/activate", [
     ServiceController::class,
@@ -33,3 +26,18 @@ Route::patch("customers/{customer}/deactivate", [
 ]);
 
 Route::apiResource("subscriptions", SubscriptionController::class);
+
+Route::patch('subscriptions/{subscription}/activate', [
+    SubscriptionController::class,
+    'activate'
+]);
+
+Route::patch('subscriptions/{subscription}/deactivate', [
+    SubscriptionController::class,
+    'deactivate'
+]);
+
+Route::patch('subscriptions/{subscription}/dismantle', [
+    SubscriptionController::class,
+    'dismantle'
+]);
